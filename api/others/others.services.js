@@ -33,7 +33,7 @@ module.exports = {
         );
     },
     getUserByUserName :(nickname,callBack) =>{
-        pool.query('select nickname,Password_ from user where nickname =  ?',
+        pool.query('select nickname,Password_ from Others where nickname =  ?',
         [username],
         (error, results,fields) =>{
             if(error) {
@@ -45,7 +45,7 @@ module.exports = {
     },
     updateUser :(data,callBack) => {
         pool.query(
-           'update user set nickname= ? , set Password_= ? where nickname= ?' ,
+           'update Others set nickname= ? , set Password_= ? where nickname= ?' ,
            [
                data.nickname,
                data.Password_,
@@ -60,7 +60,7 @@ module.exports = {
     },
     deleteUser : (data, callBack) => {
         pool.query(
-            'delete from user where nickname = ? ',
+            'delete from Others where nickname = ? ',
             [data.username],
             (error, results, fields) => {
                 if (error) {
