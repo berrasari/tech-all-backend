@@ -22,8 +22,8 @@ module.exports={
 
     },
     getUserByUserName: (req, res) => {
-        const username = req.params.username;
-        getUserByUserName(username,(err,results) => {
+        const nickname = req.params.nickname;
+        getUserByUserName(nickname,(err,results) => {
             if (err) {
                 console.log(err);
                 return;
