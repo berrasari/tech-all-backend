@@ -3,7 +3,7 @@ const router = require("express").Router();
 
 router.post("/",createUser);
 router.get("/", getUsers);
-router.get("/:username", getUserByUserName);
+router.get("/:nickname", getUserByUserName);
 router.patch("/", updateUsers);
 router.delete("/", deleteUser);
 
