@@ -34,7 +34,7 @@ module.exports = {
     },
     getUserByUserName :(nickname,callBack) =>{
         pool.query('select nickname,Password_ from Authors where nickname =  ?',
-        [username],
+        [nickname],
         (error, results,fields) =>{
             if(error) {
                 callBack(error);
