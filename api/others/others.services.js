@@ -61,7 +61,7 @@ module.exports = {
     deleteUser : (data, callBack) => {
         pool.query(
             'delete from Others where nickname = ? ',
-            [data.username],
+            [data.nickname],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);
