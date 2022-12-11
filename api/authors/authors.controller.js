@@ -1,4 +1,4 @@
-const {create,getUserByUserName,getUsers,deleteUser,updateUsers} = require('./others.services');
+const {create,getUserByUserName,getUsers,deleteUser,updateUsers} = require('./authors.services');
 
  
 module.exports={

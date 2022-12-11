@@ -1,11 +1,11 @@
-const {create,getUserByUserName,getUsers,deleteUser,updateUsers} = require('./others.services');
+const {createCategory,getCategoriesByCategoryName,getCategories,deleteCategory,updateCategory} = require('./categories.services');
 
  
 module.exports={
-    createUser : (req, res) => {
+    createCategory : (req, res) => {
         const body = req.body;
         
-        create(body,(err, results) => {
+        createCategory(body,(err, results) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json({
@@ -21,9 +21,9 @@ module.exports={
         });
 
     },
-    getUserByUserName: (req, res) => {
-        const nickname = req.params.nickname;
-        getUserByUserName(nickname,(err,results) => {
+    getCategoriesByCategoryName: (req, res) => {
+        const CategoryName = req.params.CategoryName;
+        getCategoriesByCategoryName(CategoryName,(err,results) => {
             if (err) {
                 console.log(err);
                 return;
@@ -40,8 +40,8 @@ module.exports={
             });
         });
     }, 
-    getUsers: (req, res) => {
-        getUsers((err, results) => {
+    getCategories: (req, res) => {
+        getCategories((err, results) => {
             if (err) {
                 console.log(err);
                 return;
@@ -53,10 +53,10 @@ module.exports={
             });
         });
     }, 
-    updateUsers: (req, res) => {
+    updateCategory: (req, res) => {
         const body = req.body;
         
-        updateUsers(body,(err, results) => {
+        updateCategory(body,(err, results) => {
             if (err) {
                 console.log(err);
                 return;
@@ -67,10 +67,11 @@ module.exports={
                message : "guncelleme basarili"
             });
         });
-    }, deleteUser: (req, res) => {
+    }, 
+    deleteCategory: (req, res) => {
         const data = req.body;
     
-        deleteUser(data, (err, results) => {
+        deleteCategory(data, (err, results) => {
             if (err) {
                 console.log(err);
                 return;

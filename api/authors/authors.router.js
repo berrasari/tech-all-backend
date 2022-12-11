@@ -1,4 +1,4 @@
-const { createUser, getUserByUserName, getUsers, deleteUser, updateUsers} = require("./others.controller");
+const { createUser, getUserByUserName, getUsers, deleteUser, updateUsers} = require("./authors.controller");
 const router = require("express").Router();
 
 router.post("/",createUser);

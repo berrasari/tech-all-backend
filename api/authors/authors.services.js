@@ -2,7 +2,7 @@ const pool = require("../../config/database");
 module.exports = {
     create : (data,callBack) => {
         pool.query(
-            'insert into Others (nickname,UserType_ID,Name,Surname,Password_,e_mail,PhoneNumber) values( ?,?,?,?,?,?,?)' 
+            'insert into Authors (nickname,UserType_ID,Name,Surname,Password_,e_mail,PhoneNumber) values( ?,?,?,?,?,?,?)' 
         [
             data.nickname,
             data.Name,
@@ -20,7 +20,7 @@ module.exports = {
         );
     },
     getUsers : callBack => {
-        pool.query('select nickname , Password_ from Others',
+        pool.query('select nickname , Password_ from Authors',
         [],
         (err, results,fields) =>{
             if(err) {
@@ -33,7 +33,7 @@ module.exports = {
         );
     },
     getUserByUserName :(nickname,callBack) =>{
-        pool.query('select nickname,Password_ from Others where nickname =  ?',
+        pool.query('select nickname,Password_ from Authors where nickname =  ?',
         [nickname],
         (error, results,fields) =>{
             if(error) {
@@ -45,7 +45,7 @@ module.exports = {
     },
     updateUser :(data,callBack) => {
         pool.query(
-           'update Others set nickname= ? , set Password_= ? where nickname= ?' ,
+           'update Authors set nickname= ? , set Password_= ? where nickname= ?' ,
            [
                data.nickname,
                data.Password_,
@@ -60,7 +60,7 @@ module.exports = {
     },
     deleteUser : (data, callBack) => {
         pool.query(
-            'delete from Others where nickname = ? ',
+            'delete from Authors where nickname = ? ',
             [data.nickname],
             (error, results, fields) => {
                 if (error) {

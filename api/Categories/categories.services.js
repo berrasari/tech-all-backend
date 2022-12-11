@@ -1,15 +1,11 @@
 const pool = require("../../config/database");
 module.exports = {
-    create : (data,callBack) => {
+    createCategory : (data,callBack) => {
         pool.query(
-            'insert into Others (nickname,UserType_ID,Name,Surname,Password_,e_mail,PhoneNumber) values( ?,?,?,?,?,?,?)' 
+            'insert into Categories (CategoryID,CategoryNaame) values( ?,?)' 
         [
-            data.nickname,
-            data.Name,
-            data.Surname,
-            data.Password_,
-            data.e_mail,
-            data.PhoneNumber
+            data.CategoryID,
+            data.CategoryName
         ], 
         (error,results,fields) => {
             if (error) {
@@ -19,8 +15,8 @@ module.exports = {
         }
         );
     },
-    getUsers : callBack => {
-        pool.query('select nickname , Password_ from Others',
+    getCategories : callBack => {
+        pool.query('select CategoryName from Categories',
         [],
         (err, results,fields) =>{
             if(err) {
@@ -32,9 +28,9 @@ module.exports = {
         
         );
     },
-    getUserByUserName :(nickname,callBack) =>{
-        pool.query('select nickname,Password_ from Others where nickname =  ?',
-        [nickname],
+    getCategoriesByCategoryName :(CategoryName,callBack) =>{
+        pool.query('select CategoryName from Categories where CategoryID =  ?',
+        [CategoryName],
         (error, results,fields) =>{
             if(error) {
                 callBack(error);
@@ -43,12 +39,11 @@ module.exports = {
         }
         );
     },
-    updateUser :(data,callBack) => {
+    updateCategory :(data,callBack) => {
         pool.query(
-           'update Others set nickname= ? , set Password_= ? where nickname= ?' ,
+           'update Categories set CategoryName= ?  where CategoryName= ?' ,
            [
-               data.nickname,
-               data.Password_,
+            data.CategoryName,
            ], 
            (error, results,fields) => {
                if (error) {
@@ -58,10 +53,10 @@ module.exports = {
            }
         );
     },
-    deleteUser : (data, callBack) => {
+    deleteCategory : (data, callBack) => {
         pool.query(
-            'delete from Others where nickname = ? ',
-            [data.nickname],
+            'delete from Categories where CategoryName = ? ',
+            [data.CategoryName],
             (error, results, fields) => {
                 if (error) {
                     return callBack(error);
