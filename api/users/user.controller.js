@@ -4,7 +4,7 @@ const {create,getUserByUserName,getUsers,deleteUser,updateUsers} = require('./us
 module.exports={
     createUser : (req, res) => {
         const body = req.body;
-        
+
         create(body,(err, results) => {
             if (err) {
                 console.log(err);
@@ -34,6 +34,8 @@ module.exports={
                     message: "kayit bulunamadi"
                 });
             }
+            results.password = undefined;
+            
             return res.json({
                 success:1,
                 data: results,
