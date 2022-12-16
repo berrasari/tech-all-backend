@@ -4,7 +4,7 @@ const pool = require("../../config/database");
 module.exports = {
 create : (data,callBack) => {
     pool.query(
-        'insert into Content (ContentID,Content,CategoryID,Topic,Keywords,Likes,Comments ) values( ?,?,?,?,?,?,?)', 
+        'insert into Content (userid,title,imageurl,Content,CategoryID,Keywords,Likes,Comments) values( ?,?,?,?,?,?,?)', 
     [
         data.ContentID,
         data.Content,
@@ -23,7 +23,7 @@ create : (data,callBack) => {
     );
 },
 getContents : callBack => {
-    pool.query('select ContentID , Topic from Content',
+    pool.query('select ContentID , title from Content',
     [],
     (err, results,fields) =>{
         if(err) {
@@ -36,7 +36,7 @@ getContents : callBack => {
     );
 },
 getContentsByTopic :(ContentID,callBack) =>{
-    pool.query('select Topic,Content from Content where ContentID =  ?',
+    pool.query('select title,Content from Content where ContentID =  ?',
     [ContentID],
     (error, results,fields) =>{
         if(error) {
@@ -48,7 +48,7 @@ getContentsByTopic :(ContentID,callBack) =>{
 },
 updateContents :(data,callBack) => {
     pool.query(
-       'update Content set Content= ? , set Topic= ? where Topic= ?' ,
+       'update Content set Content= ? , set title= ? where title= ?' ,
        [
            data.Topic,
            data.Content
