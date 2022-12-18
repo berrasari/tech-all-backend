@@ -39,8 +39,8 @@ module.exports={
 
 
     getContentByAuthor: (req, res) => {
-        const userid = req.params.userid;
-        getContentByAuthor(userid, (err, results) => {
+        const username = req.params.username;
+        getContentByAuthor(username, (err, results) => {
             if (err) {
                 console.log(err);
                 return;
