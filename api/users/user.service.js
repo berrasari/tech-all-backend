@@ -19,7 +19,7 @@ create : (data,callBack) => {
     );
 },
 getUsers : callBack => {
-    pool.query('select username , password from user',
+    pool.query('select * from user',
     [],
     (err, results,fields) =>{
         if(err) {
@@ -32,7 +32,7 @@ getUsers : callBack => {
     );
 },
 getUserByUserName :(username,callBack) =>{
-    pool.query('select username,password from user where username =  ?',
+    pool.query('select * from user where username =  ?',
     [username],
     (error, results,fields) =>{
         if(error) {

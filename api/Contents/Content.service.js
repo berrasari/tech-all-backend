@@ -37,7 +37,7 @@ create : (data,callBack) => {
         );
     },
 getContents : callBack => {
-    pool.query('select * from Content',
+    pool.query('select * from Content INNER JOIN user ON Content.userid = user.userid ',
     [],
     (err, results,fields) =>{
         if(err) {
