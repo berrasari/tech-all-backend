@@ -3,8 +3,8 @@ const router = require("express").Router();
 
 router.post("/",createContent);
 router.get("/", getContents);
-router.get("/:username", getContentByAuthor);
-router.get("/detay/:ContentID", getContentById);
+router.get("/author/:username", getContentByAuthor);
+router.get("/:ContentID", getContentById);
 
 
 module.exports = router;

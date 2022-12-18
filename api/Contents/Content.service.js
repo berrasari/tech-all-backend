@@ -24,7 +24,7 @@ create : (data,callBack) => {
     );
 },
     getContentByAuthor: (username, callBack) => {
-        pool.query('select * from Content Content INNER JOIN user ON Content.userid = user.userid where username =  ?',
+        pool.query('select * from  Content INNER JOIN user ON Content.userid = user.userid where username =  ?',
             
             [username],
             
@@ -50,18 +50,16 @@ getContents : callBack => {
     );
 },
     getContentById: (ContentID, callBack) => {
-        pool.query('select * from Content where ContentID =  ?',
-
-            [ContentID],
-
-            (error, results, fields) => {
-                if (error) {
-                    callBack(error);
-                }
-                return callBack(null, results);
+        pool.query('select * from Content INNER JOIN user ON Content.userid = user.userid where ContentID =  ?',
+        [ContentID],
+        (error, results, fields) => {
+            if (error) {
+                callBack(error);
             }
-        );
-    },
+            return callBack(null, results[0]);
+        }
+    );
+},
     
 
 };

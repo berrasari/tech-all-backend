@@ -39,8 +39,8 @@ module.exports={
 
 
     getContentByAuthor: (req, res) => {
-        const userid = req.params.userid;
-        getContentByAuthor(userid, (err, results) => {
+        const username = req.params.username;
+        getContentByAuthor(username, (err, results) => {
             if (err) {
                 console.log(err);
                 return;
@@ -61,8 +61,8 @@ module.exports={
     },
 
     getContentById: (req, res) => {
-        const id = req.params.ContentID;
-        getContentById(id, (err, results) => {
+        const ContentID = req.params.ContentID;
+        getContentById(ContentID, (err, results) => {
             if (err) {
                 console.log(err);
                 return;
