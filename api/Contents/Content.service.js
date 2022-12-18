@@ -23,10 +23,10 @@ create : (data,callBack) => {
     }
     );
 },
-    getContentByAuthor: (userid, callBack) => {
-        pool.query('select * from Content where userid =  ?',
+    getContentByAuthor: (username, callBack) => {
+        pool.query('select * from Content Content INNER JOIN user ON Content.userid = user.userid where username =  ?',
             
-            [userid],
+            [username],
             
             (error, results, fields) => {
                 if (error) {
@@ -37,7 +37,7 @@ create : (data,callBack) => {
         );
     },
 getContents : callBack => {
-    pool.query('select Content, userid,Content,CategoryID,title,Keywords from Content',
+    pool.query('select * from Content',
     [],
     (err, results,fields) =>{
         if(err) {
@@ -49,5 +49,19 @@ getContents : callBack => {
     
     );
 },
+    getContentById: (ContentID, callBack) => {
+        pool.query('select * from Content where ContentID =  ?',
+
+            [ContentID],
+
+            (error, results, fields) => {
+                if (error) {
+                    callBack(error);
+                }
+                return callBack(null, results);
+            }
+        );
+    },
+    
 
 };

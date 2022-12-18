@@ -1,5 +1,5 @@
 
-const { create, getContents, getContentByAuthor} = require('./Content.service');
+const { create, getContents, getContentByAuthor, getContentById} = require('./Content.service');
 
  
 module.exports={
@@ -59,5 +59,28 @@ module.exports={
             });
         });
     },
+
+    getContentById: (req, res) => {
+        const id = req.params.ContentID;
+        getContentById(id, (err, results) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            if (!results) {
+                return res.json({
+                    success: 0,
+                    message: "kayit bulunamadi"
+                });
+            }
+
+
+            return res.json({
+                success: 1,
+                data: results,
+            });
+        });
+    },
+
 
 };
