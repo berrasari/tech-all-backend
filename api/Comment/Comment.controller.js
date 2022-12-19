@@ -36,27 +36,7 @@ module.exports={
             });
         });
     },
-    getCount: (req, res) => {
-        const ContentID = req.params.ContentID;
-        getCount(username, (err, results) => {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            if (!results) {
-                return res.json({
-                    success: 0,
-                    message: "kayit bulunamadi"
-                });
-            }
-            
-
-            return res.json({
-                success: 1,
-                data: results,
-            });
-        });
-    },
+   
 
 
     getCommentByuser: (req, res) => {
