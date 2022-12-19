@@ -5,11 +5,13 @@ var cors = require('cors');
 app.use(cors());
 const userRouter = require('./api/users/user.router');
 const ContentRouter = require('./api/Contents/Content.router');
-const CategorytRouter = require('./api/Categories/categories.router');
+const CategoryRouter = require('./api/Categories/categories.router');
+const LikeRouter = require('./api/Likes/Likes.router');
 app.use(express.json());
 app.use("/api/users",userRouter);
 app.use("/api/Contents", ContentRouter);
-app.use("/api/Categories", CategorytRouter);
+app.use("/api/Categories", CategoryRouter);
+app.use("/api/Likes", LikeRouter);
 
 app.listen(process.env.APP_PORT,()=>{
     console.log("listening", process.env.APP_PORT);
