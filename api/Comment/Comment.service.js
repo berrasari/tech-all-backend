@@ -46,19 +46,7 @@ getComments : callBack => {
     
     );
 },
-getCount :(ContentID,callBack )=> {
-    pool.query('select Count(*) from Comments where ContentID=?',
-    [ContentID],
-    (err, results,fields) =>{
-        if(err) {
-            callBack(err);
 
-        }
-        return callBack(null,results[0]);
-    }
-    
-    );
-},
     getCommentById:(CommentID, callBack) => {
         pool.query('select * from Comments INNER JOIN user ON Comments.userid = user.userid where CommentID =  ?',
         [CommentID],
