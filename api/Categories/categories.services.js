@@ -2,7 +2,7 @@ const pool = require("../../config/database");
 module.exports = {
     createCategory : (data,callBack) => {
         pool.query(
-            'insert into Categories (CategoryID,CategoryNaame) values( ?,?)' 
+            'insert into Categories (CategoryID,CategoryName) values( ?,?)' 
         [
             data.CategoryID,
             data.CategoryName

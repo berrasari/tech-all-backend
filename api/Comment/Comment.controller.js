@@ -62,8 +62,8 @@ module.exports={
     },
 
     getCommentById: (req, res) => {
-        const CommentID = req.params.CommentID;
-        getCommentById(CommentID, (err, results) => {
+        const ContentID = req.params.ContentID;
+        getCommentById(ContentID, (err, results) => {
             if (err) {
                 console.log(err);
                 return;

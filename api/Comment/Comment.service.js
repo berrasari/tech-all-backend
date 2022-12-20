@@ -34,7 +34,7 @@ createComment : (data,callBack) => {
         );
     },
 getComments : callBack => {
-    pool.query('select * from Comments INNER JOIN user ON Comments.userid = user.userid INNER JOIN ON Content Comments.ContentID=Content.ContentID',
+    pool.query('select * from Comments ',
     [],
     (err, results,fields) =>{
         if(err) {
@@ -47,9 +47,9 @@ getComments : callBack => {
     );
 },
 
-    getCommentById:(CommentID, callBack) => {
-        pool.query('select * from Comments INNER JOIN user ON Comments.userid = user.userid where CommentID =  ?',
-        [CommentID],
+    getCommentById:(ContentID, callBack) => {
+        pool.query('select * from Comments  where ContentID =  ?',
+        [ContentID],
         (error, results, fields) => {
             if (error) {
                 callBack(error);
