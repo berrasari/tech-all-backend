@@ -47,17 +47,17 @@ getComments : callBack => {
     );
 },
 
-    getCommentById:(ContentID, callBack) => {
-        pool.query('select * from Comments  where ContentID =  ?',
-        [ContentID],
-        (error, results, fields) => {
-            if (error) {
-                callBack(error);
+    getCommentById: (ContentID, callBack) => {
+        pool.query('select Comments.* , username from Comments INNER JOIN user ON Comments.userid = user.userid where ContentID =  ?',
+            [ContentID],
+            (error, results, fields) => {
+                if (error) {
+                    callBack(error);
+                }
+                return callBack(null, results);
             }
-            return callBack(null, results[0]);
-        }
-    );
-}
+        );
+    }
     
 
 };

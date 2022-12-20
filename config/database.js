@@ -3,7 +3,7 @@ const {createPool} = require('mysql');
 const pool = createPool({
     host: "sql.freedb.tech",
     user: "freedb_berra",
-    password: "JKu$mj9GZag8Z!J",
+    password: "FF8CMd@nC8jE3cr",
     database: "freedb_techAll",
 
     connectionLimit: 1000,

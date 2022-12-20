@@ -38,7 +38,7 @@ create : (data,callBack) => {
     },
     getContents: (callBack) => {
         pool.query(
-            'SELECT Content.*, user.*, COUNT(Likes.ContentID) as Likes,COUNT(Comments.ContentID) as Comments,Comments.Comment as Comment,Comments.userid as author FROM Content INNER JOIN user ON Content.userid = user.userid left JOIN Comments ON Content.ContentID = Comments.ContentID left JOIN Likes ON Content.ContentID = Likes.ContentID  GROUP BY Content.ContentID,Comments.Comment,Comments.userid',
+            'SELECT Content.*, user.*, COUNT(Likes.ContentID) as count FROM Content INNER JOIN user ON Content.userid = user.userid LEFT JOIN Likes ON Content.ContentID = Likes.ContentID GROUP BY Content.ContentID',
             [],
             (err, results, fields) => {
                 if (err) {
@@ -50,7 +50,7 @@ create : (data,callBack) => {
     },
 
     getContentById: (ContentID, callBack) => {
-        pool.query('SELECT Content.*, user.*, COUNT(Likes.ContentID) as Likes,COUNT(Comments.ContentID) as Comments,Comments.Comment as Comment,Comments.userid as author FROM Content inner JOIN user ON Content.userid = user.userid left JOIN Comments ON Content.ContentID = Comments.ContentID left JOIN Likes ON Content.ContentID = Likes.ContentID  GROUP BY Content.ContentID,Comments.Comment,Comments.userid HAVING ContentID =  ?',
+        pool.query('SELECT Content.*, user.*, COUNT(Likes.ContentID) as count FROM Content INNER JOIN user ON Content.userid = user.userid LEFT JOIN Likes ON Content.ContentID = Likes.ContentID GROUP BY Content.ContentID HAVING ContentID =  ?',
         [ContentID],
         (error, results, fields) => {
             if (error) {
