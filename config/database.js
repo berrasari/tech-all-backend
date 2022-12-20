@@ -1,10 +1,10 @@
 const {createPool} = require('mysql');
 
 const pool = createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.MYSQL_DB,
+    host: "sql.freedb.tech",
+    user: "freedb_berra",
+    password: "%abdV!EGGPFNt3v",
+    database: "freedb_techAll",
 
     connectionLimit: 1000,
     connectTimeout: 60 * 60 * 1000,
