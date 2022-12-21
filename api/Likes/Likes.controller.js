@@ -1,5 +1,5 @@
 
-const { create, getLikes, getLikeById  } = require('./Likes.service');
+const { create, getLikes, getLikeById } = require('./Likes.service');
 
 
 module.exports = {

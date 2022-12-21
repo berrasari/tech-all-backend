@@ -1,4 +1,4 @@
-const {create,getUserByUserName,getUsers,deleteUser,updateUsers} = require('./user.service');
+const { create, getAuthors,getUserByUserName,getUsers,deleteUser,updateUsers} = require('./user.service');
 
  
 module.exports={
@@ -49,6 +49,19 @@ module.exports={
                 return;
             }
             
+            return res.json({
+                success: 1,
+                data: results,
+            });
+        });
+    }, 
+    getAuthors: (req, res) => {
+        getAuthors((err, results) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
             return res.json({
                 success: 1,
                 data: results,

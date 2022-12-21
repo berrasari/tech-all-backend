@@ -31,6 +31,19 @@ getUsers : callBack => {
     
     );
 },
+    getAuthors: callBack => {
+        pool.query('select * from user where UserType_ID = 2',
+            [],
+            (err, results, fields) => {
+                if (err) {
+                    callBack(err);
+
+                }
+                return callBack(null, results);
+            }
+
+        );
+    },
 getUserByUserName :(username,callBack) =>{
     pool.query('select * from user where username =  ?',
     [username],
